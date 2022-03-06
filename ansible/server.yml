@@ -1,0 +1,21 @@
+---
+- hosts: dev
+  become: yes
+  vars_files:
+    - variables/variables.yml
+
+  tasks:
+    - name: update package
+      apt: update_cache=yes state=latest
+
+    - name: install nginx
+      apt: name=nginx state=latest
+
+    - name: copy index.html file
+      copy:
+        src={{src_file_path}}
+        dest={{dest_file_path}}
+
+  handlers:
+    - name: Restart nginx
+      service: name=nginx state=restarted

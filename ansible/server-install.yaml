@@ -8,6 +8,11 @@
 
   - name: install nginx
     apt: name=nginx state=latest
-      
-  - name: start nginx
-    service: name=nginx state=started
+
+  - name: copy index.html file
+    copy:
+      src: /mnt/c/Users/lbena/OneDrive/Documents/GitHub-dev/ansible-lectures-decemberbatch/ansible/index.html
+      dest: /var/www/html/
+
+  - name: restart nginx
+    service: name=nginx state=restarted
