@@ -1,5 +1,11 @@
 ---
 - hosts: dev
   become: yes
+  become_user: root
   roles:
-  - roles-tomcat
+  - tomcat
+  - docker
+  - nginx
+  - java
+  - jenkins
+  - dns
