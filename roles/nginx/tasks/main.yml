@@ -1,0 +1,10 @@
+  - name: update package
+    apt: update_cache=yes
+
+  - name: install nginx
+    apt: name=nginx state=latest
+
+  - name: copy index.html file
+    copy:
+      src: /mnt/c/Users/lbena/OneDrive/Documents/GitHub-dev/ansible-lectures-decemberbatch/ansible/index.html
+      dest: /var/www/html/
